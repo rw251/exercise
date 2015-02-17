@@ -1,10 +1,32 @@
 {
   "name": "exercise",
   "version": "1.0.0",
-  "description": "",
+  "description": "Exercise logger and feedback based on NHS guidelines.",
   "main": "Gruntfile.js",
+  "devDependencies": {
+    "browserify": "^6.3.2",
+    "hashmark": "^2.0.0",
+    "jade": "^1.7.0",
+    "jshint": "^2.5.10",
+    "minifyify": "^4.4.0",
+    "nodemon": "^1.2.1",
+    "rimraf": "^2.2.8",
+    "stylus": "^0.49.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf dist/*",
+    
+    "lint" : "npm run lint:js -s && npm run lint:css -s",
+    "lint:js" : "jshint src/scripts/*.js",
+    "lint:css" : "",
+
+    "prebuild": "npm run lint -s && npm run clean -s",
+    "build": "npm run build:scripts -s && npm run build:styles -s && npm run build:markup -s",
+    "build:scripts": "browserify -d src/scripts/main.js -p [minifyify --compressPath . --map main.js.map --output dist/main.js.map] | hashmark -n dist/main.js -s -l 8 -m assets.json 'dist/{name}{hash}{ext}'",
+    "build:styles": "stylus --include-css src/styles/main.styl -m -o dist/ && hashmark -s -l 8 -m assets.json dist/main.css 'dist/{name}{hash}{ext}'",
+    "build:markup": "jade src/index.jade --obj assets.json -o dist",
+    
+    "watch": "nodemon -q -w src/ --ext '.' --exec 'npm run build'"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,42 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        title NPM Scripts Demo
+        meta(name='description', content='')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel="stylesheet",href="#{locals['dist/main.css'].substr(5)}")
+    body
+        h1 Exercise Logger
+        .container
+            .row
+                .col-sm-6
+                    .panel.panel-default
+                        .panel-body
+                            form#workout.form-inline(method='post')
+                                .form-group
+                                    label(for='when') When was the workout?
+                                    input.form-control(id='when',disabled)
+                                    #when-picker
+                                .form-group
+                                    label(for='what') What was the workout?
+                                    label.radio-inline
+                                        input(type="radio",name="what",id="what1",value="option1")
+                                        |Moderate
+                                    label.radio-inline
+                                        input(type="radio",name="what",id="what2",value="option2")
+                                        |Vigorous
+                                    label.radio-inline
+                                        input(type="radio",name="what",id="what3",value="option3")
+                                        |Strengthening
+                                .form-group
+                                    label(for='length') How many minutes?
+                                    input.form-control(id='length',type='text',value='',placeholder='Number of minutes')
+                                button.btn.btn-default(type='submit') Submit
+
+                .col-sm-6
+                    .panel.panel-default
+                        .panel-body
+                            Right panel
+        script(src="#{locals['dist/main.js'].substr(5)}")
