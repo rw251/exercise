@@ -14,7 +14,7 @@ html(lang="en")
                 .col-sm-6
                     .panel.panel-default
                         .panel-body
-                            form#workout.form-inline(method='post')
+                            form#workout.form-inline
                                 .form-group
                                     label(for='when') When was the workout?
                                     input.form-control(id='when',disabled)
@@ -22,18 +22,20 @@ html(lang="en")
                                 .form-group
                                     label(for='what') What was the workout?
                                     label.radio-inline
-                                        input(type="radio",name="what",id="what1",value="option1")
+                                        input(type="radio",name="what",id="what1",value="Moderate")
                                         |Moderate
                                     label.radio-inline
-                                        input(type="radio",name="what",id="what2",value="option2")
+                                        input(type="radio",name="what",id="what2",value="Vigorous")
                                         |Vigorous
                                     label.radio-inline
-                                        input(type="radio",name="what",id="what3",value="option3")
+                                        input(type="radio",name="what",id="what3",value="Strengthening")
                                         |Strengthening
                                 .form-group
                                     label(for='length') How many minutes?
                                     input.form-control(id='length',type='text',value='',placeholder='Number of minutes')
-                                button.btn.btn-default(type='submit') Submit
+                                hr
+                                .pull-right
+                                    button.btn.btn-default(type='submit',id='subBtn',disabled) Submit
 
                 .col-sm-6
                     .panel.panel-default
