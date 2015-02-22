@@ -26,7 +26,7 @@
     "build": "npm run build:scripts -s && npm run build:styles -s && npm run build:markup -s",
     "build:scripts": "browserify -d src/scripts/main.js -p [minifyify --compressPath . --map main.js.map --output dist/main.js.map] | hashmark -n dist/main.js -s -l 8 -m assets.json 'dist/{name}{hash}{ext}'",
     "build:styles": "stylus --include-css src/styles/main.styl -m -o dist/ && hashmark -s -l 8 -m assets.json dist/main.css 'dist/{name}{hash}{ext}'",
-    "build:markup": "jade src/index.jade --obj assets.json -o dist && mv src/favicon.ico dist/favicon.ico",
+    "build:markup": "jade src/index.jade --obj assets.json -o dist && cp src/favicon.ico dist/favicon.ico",
     
     "predev" : "npm run lint -s && npm run clean -s",
     "dev" : "npm run dev:scripts -s && npm run dev:styles -s && npm run dev:markup -s",

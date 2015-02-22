@@ -15,7 +15,7 @@ html(lang="en")
                     a.navbar-brand(href="#") Exercise Logger
         .container
             .row
-                .col-sm-6
+                .col-sm-3
                     .panel.panel-default
                         .panel-body
                             form#workout.form-inline
@@ -25,7 +25,7 @@ html(lang="en")
                                     #when-picker
                                 .form-group
                                     label(for='what') What was the workout?
-                                    .btn-group(data-toggle="buttons")
+                                    div(data-toggle="buttons")
                                         label.btn.btn-default
                                             input(type="radio",name="what",id="what1",value="Moderate",autocomplete="off")
                                             |Moderate
@@ -37,12 +37,12 @@ html(lang="en")
                                             |Strengthening
                                 .form-group
                                     label(for='length') How many minutes?
-                                    input.form-control(id='length',type='text',value='',placeholder='Number of minutes')
+                                    input.form-control.short(id='length',type='text',value='',placeholder='Minutes')
                                 hr
                                 .pull-right
                                     button.btn.btn-default(type='submit',id='subBtn',disabled) Submit
 
-                .col-sm-6
+                .col-sm-9
                     .panel.panel-default
                         #right-panel.panel-body
         script(src="#{locals['dist/main.js'].substr(5)}")
