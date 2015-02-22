@@ -6,9 +6,13 @@ html(lang="en")
         title NPM Scripts Demo
         meta(name='description', content='')
         meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(href='https://fonts.googleapis.com/css?family=Raleway',rel='stylesheet',type='text/css')
         link(rel="stylesheet",href="#{locals['dist/main.css'].substr(5)}")
     body
-        h1 Exercise Logger
+        nav.navbar.navbar-fixed-top.part
+            .container
+                .navbar-header
+                    a.navbar-brand(href="#") Exercise Logger
         .container
             .row
                 .col-sm-6
@@ -21,15 +25,16 @@ html(lang="en")
                                     #when-picker
                                 .form-group
                                     label(for='what') What was the workout?
-                                    label.radio-inline
-                                        input(type="radio",name="what",id="what1",value="Moderate")
-                                        |Moderate
-                                    label.radio-inline
-                                        input(type="radio",name="what",id="what2",value="Vigorous")
-                                        |Vigorous
-                                    label.radio-inline
-                                        input(type="radio",name="what",id="what3",value="Strengthening")
-                                        |Strengthening
+                                    .btn-group(data-toggle="buttons")
+                                        label.btn.btn-default
+                                            input(type="radio",name="what",id="what1",value="Moderate",autocomplete="off")
+                                            |Moderate
+                                        label.btn.btn-default
+                                            input(type="radio",name="what",id="what2",value="Vigorous",autocomplete="off")
+                                            |Vigorous
+                                        label.btn.btn-default
+                                            input(type="radio",name="what",id="what3",value="Strengthening",autocomplete="off")
+                                            |Strengthening
                                 .form-group
                                     label(for='length') How many minutes?
                                     input.form-control(id='length',type='text',value='',placeholder='Number of minutes')
@@ -39,6 +44,5 @@ html(lang="en")
 
                 .col-sm-6
                     .panel.panel-default
-                        .panel-body
-                            Right panel
+                        #right-panel.panel-body
         script(src="#{locals['dist/main.js'].substr(5)}")
